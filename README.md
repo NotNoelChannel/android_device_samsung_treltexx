@@ -1,6 +1,6 @@
-## TWRP device tree for Samsung Galaxy Note 4 Exynos LTE N910C/H (treltexx)
+## TeamWin + OrangeFox Recovery device tree for Samsung Galaxy Note 4 Exynos LTE N910C/H (treltexx)
 
- Copyright (C) 2021 universal5433 Open-Source
+ Copyright (C) 2025 NotNoelChannel & universal5433 Open-Source
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ Add to `.repo/local_manifests/treltexx.xml`:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-	<project name="universal5433/android_device_samsung_treltexx" path="device/samsung/treltexx" remote="github" revision="android-7.1" />
+	<project name="NotNoelChannel/android_device_samsung_treltexx" path="device/samsung/treltexx" remote="github" revision="android-7.1" />
 </manifest>
 ```
 
@@ -33,5 +33,3 @@ To build:
 lunch omni_treltexx-eng
 make -j5 recoveryimage
 ```
-
-Kernel sources are available at: https://github.com/universal5433/android_device_samsung_universal5433

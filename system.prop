@@ -1,6 +1,0 @@
-ro.boot.selinux=permissive
-ro.arch=universal5433
-ro.chipname=universal5433
-ro.hardware=universal5433
-ro.sf.lcd_density=560
-ro.boot.bootdevice=15540000.dwmmc0

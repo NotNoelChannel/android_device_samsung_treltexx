@@ -40,10 +40,26 @@ TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_SMP := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
+# /proc/partitions * 2 (why?) * BLOCK_SIZE (512) = size in bytes
+BOARD_BOOTIMAGE_PARTITION_SIZE := 14680064
+BOARD_CACHEIMAGE_PARTITION_SIZE := 209715200
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16777216
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3774873600
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 27028094976
+# blockdev --getbsz /dev/block/mmcblk0p9
+BOARD_FLASH_BLOCK_SIZE := 4096
+
 # Kernel
-TARGET_PREBUILT_KERNEL := device/samsung/treltexx/kernel
+TARGET_KERNEL_SOURCE := kernel/samsung/universal5433
+TARGET_KERNEL_CONFIG := twrp_trelte_defconfig
 BOARD_KERNEL_BASE := 0x10000000
-BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100 --dt device/samsung/treltexx/dt.img
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100 --dt $(DEVICE_TREE)/dt.img
+LZMA_RAMDISK_TARGETS := recovery
+BOARD_CANT_BUILD_RECOVERY_FROM_BOOT_PATCH := true
+
+# Toolchain
+KERNEL_TOOLCHAIN := /opt/toolchains/arm-eabi-4.8/bin
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
 
 # File systems
 BOARD_HAS_LARGE_FILESYSTEM := true
@@ -67,7 +83,9 @@ TW_EXCLUDE_TWRPAPP := true
 TW_USE_NEW_MINADBD := true
 TW_EXCLUDE_DEFAULT_USB_INIT := true
 TW_INCLUDE_FBE := true
-TW_INCLUDE_CRYPTO := true
+# We avoid this for now to avoid build errors on OrangeFox,
+# if you know a fix please let me know! :D
+TW_INCLUDE_CRYPTO := false
 BOARD_HAS_NO_REAL_SDCARD := true
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
 TW_INCLUDE_CRYPTO := true
