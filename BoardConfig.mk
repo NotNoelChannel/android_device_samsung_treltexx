@@ -21,7 +21,6 @@ override TARGET_OUT_VENDOR_SHARED_LIBRARIES = $(TARGET_OUT_SHARED_LIBRARIES)
 
 # Bootloader
 TARGET_NO_BOOTLOADER := true
-TARGET_BOOTLOADER_BOARD_NAME := universal5433
 
 # Platform
 BOARD_VENDOR := samsung
@@ -50,16 +49,9 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 27028094976
 BOARD_FLASH_BLOCK_SIZE := 4096
 
 # Kernel
-TARGET_KERNEL_SOURCE := kernel/samsung/universal5433
-TARGET_KERNEL_CONFIG := twrp_trelte_defconfig
+TARGET_PREBUILT_KERNEL := $(DEVICE_TREE)/kernel/zImage
 BOARD_KERNEL_BASE := 0x10000000
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100 --dt $(DEVICE_TREE)/dt.img
-LZMA_RAMDISK_TARGETS := recovery
-BOARD_CANT_BUILD_RECOVERY_FROM_BOOT_PATCH := true
-
-# Toolchain
-KERNEL_TOOLCHAIN := /opt/toolchains/arm-eabi-4.8/bin
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
 
 # File systems
 BOARD_HAS_LARGE_FILESYSTEM := true
@@ -88,6 +80,5 @@ TW_INCLUDE_FBE := true
 TW_INCLUDE_CRYPTO := false
 BOARD_HAS_NO_REAL_SDCARD := true
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
-TW_INCLUDE_CRYPTO := true
 # No love for the wicked (device ships with M)
 TW_EXCLUDE_SUPERSU := true
