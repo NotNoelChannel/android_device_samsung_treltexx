@@ -51,7 +51,7 @@ BOARD_FLASH_BLOCK_SIZE := 4096
 # Kernel
 TARGET_PREBUILT_KERNEL := $(DEVICE_TREE)/kernel/zImage
 BOARD_KERNEL_BASE := 0x10000000
-BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100 --dt $(DEVICE_TREE)/dt.img
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100 --dt $(DEVICE_TREE)/kernel/dt.img
 
 # File systems
 BOARD_HAS_LARGE_FILESYSTEM := true
